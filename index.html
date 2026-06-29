@@ -1,0 +1,1870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shritaashvi Micro Foundation – Bank</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange: #E85D04;
+    --orange-light: #F48C06;
+    --orange-pale: #FFF3E0;
+    --gold: #FAA307;
+    --dark: #1A0A00;
+    --text: #2D1B00;
+    --muted: #7A5A3A;
+    --white: #FFFFFF;
+    --off-white: #FFFAF5;
+    --border: rgba(232,93,4,0.15);
+    --shadow: 0 4px 32px rgba(232,93,4,0.10);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--off-white);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ── NAVBAR ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px;
+    height: 70px;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 2px 20px rgba(232,93,4,0.08);
+    transition: all 0.3s;
+  }
+
+  .nav-logo {
+    display: flex; align-items: center; gap: 12px;
+    text-decoration: none;
+  }
+
+  .nav-logo img {
+    height: 44px; width: auto;
+  }
+
+  .nav-brand {
+    display: flex; flex-direction: column; line-height: 1.1;
+  }
+
+  .nav-brand .name {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px; font-weight: 700;
+    color: var(--orange);
+    letter-spacing: 0.02em;
+  }
+
+  .nav-brand .sub {
+    font-size: 9px; font-weight: 600; letter-spacing: 0.2em;
+    color: var(--muted); text-transform: uppercase;
+  }
+
+  .nav-links {
+    display: flex; gap: 32px; list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 13.5px; font-weight: 500; color: var(--text);
+    text-decoration: none; position: relative; padding-bottom: 4px;
+    transition: color 0.2s;
+  }
+
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: 0; left: 0;
+    width: 0; height: 2px; background: var(--orange);
+    transition: width 0.3s;
+  }
+
+  .nav-links a:hover { color: var(--orange); }
+  .nav-links a:hover::after { width: 100%; }
+
+  .nav-actions { display: flex; gap: 12px; align-items: center; }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    gap: 8px; padding: 10px 22px;
+    border-radius: 6px; font-size: 13px; font-weight: 600;
+    cursor: pointer; text-decoration: none; border: none;
+    transition: all 0.25s; letter-spacing: 0.03em;
+  }
+
+  .btn-outline {
+    background: transparent; color: var(--orange);
+    border: 1.5px solid var(--orange);
+  }
+
+  .btn-outline:hover { background: var(--orange); color: var(--white); }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--orange), var(--orange-light));
+    color: var(--white);
+    box-shadow: 0 4px 16px rgba(232,93,4,0.35);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(232,93,4,0.45);
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: flex-start;
+    padding: 140px 80px 80px;
+    position: relative; overflow: hidden;
+    background: linear-gradient(135deg, #FFF3E0 0%, #FFFAF5 50%, #FFF8F0 100%);
+  }
+
+  .hero-bg-circle {
+    position: absolute; border-radius: 50%;
+    background: radial-gradient(circle, rgba(250,163,7,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-bg-circle:nth-child(1) {
+    width: 700px; height: 700px;
+    top: -200px; right: -100px;
+    animation: floatCircle 8s ease-in-out infinite;
+  }
+
+  .hero-bg-circle:nth-child(2) {
+    width: 400px; height: 400px;
+    bottom: -100px; left: 200px;
+    animation: floatCircle 6s ease-in-out infinite reverse;
+  }
+
+  @keyframes floatCircle {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-30px) scale(1.05); }
+  }
+
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(232,93,4,0.1); border: 1px solid rgba(232,93,4,0.25);
+    border-radius: 100px; padding: 6px 16px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.15em;
+    color: var(--orange); text-transform: uppercase;
+    margin-bottom: 28px;
+    animation: fadeSlideUp 0.6s ease both;
+  }
+
+  .hero-eyebrow .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--orange);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.5)} }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 5.5vw, 76px);
+    font-weight: 700; line-height: 1.08;
+    color: var(--dark); max-width: 720px;
+    animation: fadeSlideUp 0.7s 0.1s ease both;
+  }
+
+  .hero h1 span {
+    background: linear-gradient(135deg, var(--orange), var(--gold));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+
+  .hero-sub {
+    margin-top: 24px; max-width: 520px;
+    font-size: 17px; color: var(--muted); line-height: 1.7;
+    animation: fadeSlideUp 0.7s 0.2s ease both;
+  }
+
+  .hero-actions {
+    display: flex; gap: 16px; margin-top: 40px;
+    animation: fadeSlideUp 0.7s 0.3s ease both;
+  }
+
+  .hero-actions .btn { padding: 14px 32px; font-size: 14px; }
+
+  .hero-stats {
+    display: flex; gap: 48px; margin-top: 64px;
+    animation: fadeSlideUp 0.7s 0.4s ease both;
+  }
+
+  .stat-item { display: flex; flex-direction: column; gap: 4px; }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px; font-weight: 700;
+    color: var(--orange); line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 12px; color: var(--muted); font-weight: 500;
+    letter-spacing: 0.05em; text-transform: uppercase;
+  }
+
+  .hero-visual {
+    position: absolute; right: 80px; top: 50%;
+    transform: translateY(-50%);
+    animation: fadeSlideUp 0.9s 0.2s ease both;
+  }
+
+  .hero-card {
+    width: 340px;
+    background: white;
+    border-radius: 24px;
+    box-shadow: 0 24px 80px rgba(232,93,4,0.15);
+    padding: 28px;
+    border: 1px solid var(--border);
+    animation: floatCard 4s ease-in-out infinite;
+  }
+
+  @keyframes floatCard {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+
+  .card-header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  .card-chip {
+    width: 40px; height: 30px; border-radius: 6px;
+    background: linear-gradient(135deg, var(--gold), var(--orange));
+  }
+
+  .card-logo-sm {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px; font-weight: 700; color: var(--orange);
+  }
+
+  .card-number {
+    font-size: 16px; letter-spacing: 0.18em; color: var(--text);
+    margin-bottom: 20px; font-weight: 500;
+  }
+
+  .card-footer-row {
+    display: flex; justify-content: space-between; align-items: flex-end;
+  }
+
+  .card-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; }
+  .card-value { font-size: 14px; font-weight: 600; color: var(--text); margin-top: 2px; }
+
+  .balance-pill {
+    display: flex; flex-direction: column; align-items: flex-end;
+  }
+
+  .balance-amount {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; font-weight: 700; color: var(--orange);
+  }
+
+  /* Mini transaction list below card */
+  .mini-tx {
+    background: white; border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(232,93,4,0.08);
+    padding: 16px 20px; margin-top: 16px;
+    border: 1px solid var(--border);
+  }
+
+  .mini-tx-title { font-size: 11px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px; }
+
+  .tx-row {
+    display: flex; align-items: center; gap: 10px; padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .tx-row:last-child { border-bottom: none; }
+
+  .tx-icon {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: var(--orange-pale); display: flex; align-items: center; justify-content: center;
+    font-size: 14px; flex-shrink: 0;
+  }
+
+  .tx-info { flex: 1; }
+  .tx-name { font-size: 12px; font-weight: 600; color: var(--text); }
+  .tx-date { font-size: 10px; color: var(--muted); }
+  .tx-amt { font-size: 13px; font-weight: 700; }
+  .tx-amt.credit { color: #22c55e; }
+  .tx-amt.debit { color: #ef4444; }
+
+  @keyframes fadeSlideUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── TICKER ── */
+  .ticker {
+    background: linear-gradient(90deg, var(--orange), var(--orange-light));
+    color: white; padding: 10px 0; overflow: hidden;
+  }
+
+  .ticker-track {
+    display: flex; gap: 60px;
+    animation: ticker 30s linear infinite;
+    white-space: nowrap;
+  }
+
+  .ticker-item {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 12px; font-weight: 600; letter-spacing: 0.05em;
+  }
+
+  .ticker-item .up { color: #a7f3d0; }
+  .ticker-item .dn { color: #fca5a5; }
+
+  @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* ── SECTION COMMON ── */
+  section { padding: 96px 80px; }
+
+  .section-eyebrow {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--orange); margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 3vw, 44px);
+    font-weight: 700; color: var(--dark); line-height: 1.15;
+    max-width: 560px; margin-bottom: 16px;
+  }
+
+  .section-sub {
+    color: var(--muted); font-size: 15px; line-height: 1.7;
+    max-width: 480px; margin-bottom: 48px;
+  }
+
+  /* ── SERVICES ── */
+  .services { background: white; }
+
+  .services-header { text-align: center; }
+  .services-header .section-title { max-width: 600px; margin: 0 auto 12px; }
+  .services-header .section-sub { max-width: 560px; margin: 0 auto 56px; }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+  }
+
+  .service-card {
+    border: 1px solid var(--border);
+    border-radius: 20px; padding: 32px 28px;
+    position: relative; overflow: hidden;
+    transition: all 0.35s; cursor: pointer;
+    background: var(--off-white);
+  }
+
+  .service-card::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, var(--orange), var(--gold));
+    opacity: 0; transition: opacity 0.35s;
+  }
+
+  .service-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+  .service-card:hover::before { opacity: 1; }
+
+  .service-card:hover .service-icon,
+  .service-card:hover .service-name,
+  .service-card:hover .service-desc { color: white; }
+
+  .service-card:hover .service-icon-wrap { background: rgba(255,255,255,0.2); }
+
+  .service-icon-wrap {
+    width: 56px; height: 56px; border-radius: 14px;
+    background: var(--orange-pale); display: flex; align-items: center; justify-content: center;
+    margin-bottom: 20px; position: relative; z-index: 1;
+    transition: background 0.35s;
+  }
+
+  .service-icon { font-size: 26px; position: relative; z-index: 1; }
+
+  .service-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px; font-weight: 700; color: var(--dark);
+    margin-bottom: 8px; position: relative; z-index: 1; transition: color 0.35s;
+  }
+
+  .service-desc {
+    font-size: 13.5px; color: var(--muted); line-height: 1.6;
+    position: relative; z-index: 1; transition: color 0.35s;
+  }
+
+  .service-arrow {
+    position: absolute; bottom: 24px; right: 24px;
+    font-size: 18px; color: var(--orange); z-index: 1; transition: all 0.35s;
+  }
+
+  .service-card:hover .service-arrow { color: white; transform: translate(4px, -4px); }
+
+  /* ── ACCOUNTS ── */
+  .accounts { background: var(--off-white); }
+
+  .accounts-layout {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 64px; align-items: center;
+  }
+
+  .account-tabs {
+    display: flex; gap: 8px; margin-bottom: 32px; flex-wrap: wrap;
+  }
+
+  .tab-btn {
+    padding: 8px 18px; border-radius: 100px;
+    border: 1.5px solid var(--border); background: transparent;
+    font-size: 13px; font-weight: 600; color: var(--muted);
+    cursor: pointer; transition: all 0.25s;
+  }
+
+  .tab-btn.active, .tab-btn:hover {
+    background: var(--orange); border-color: var(--orange); color: white;
+  }
+
+  .account-features { display: flex; flex-direction: column; gap: 14px; }
+
+  .feature-row {
+    display: flex; align-items: center; gap: 14px; padding: 16px;
+    background: white; border-radius: 14px; border: 1px solid var(--border);
+    transition: all 0.25s;
+  }
+
+  .feature-row:hover { border-color: var(--orange); box-shadow: 0 4px 16px rgba(232,93,4,0.1); }
+
+  .feature-check {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--orange), var(--gold));
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-size: 14px; flex-shrink: 0;
+  }
+
+  .feature-text { font-size: 14px; font-weight: 500; color: var(--text); }
+
+  /* Account visual */
+  .account-visual { position: relative; }
+
+  .account-card-stack { position: relative; height: 360px; }
+
+  .stack-card {
+    position: absolute; width: 300px; border-radius: 20px;
+    padding: 24px; color: white;
+    box-shadow: 0 16px 48px rgba(0,0,0,0.15);
+  }
+
+  .stack-card:nth-child(1) {
+    background: linear-gradient(135deg, #1A0A00, #3D1F00);
+    top: 0; left: 20px; transform: rotate(-6deg);
+    z-index: 1;
+  }
+
+  .stack-card:nth-child(2) {
+    background: linear-gradient(135deg, var(--orange), var(--orange-light));
+    top: 30px; left: 0; transform: rotate(-2deg);
+    z-index: 2;
+  }
+
+  .stack-card:nth-child(3) {
+    background: linear-gradient(135deg, var(--gold), #FAC507);
+    top: 60px; left: 30px; z-index: 3;
+    color: var(--dark);
+    animation: floatCard 5s ease-in-out infinite;
+  }
+
+  .sc-logo { font-family: 'Playfair Display', serif; font-size: 12px; font-weight: 700; margin-bottom: 40px; }
+  .sc-num { font-size: 14px; letter-spacing: 0.18em; margin-bottom: 16px; }
+  .sc-row { display: flex; justify-content: space-between; font-size: 11px; }
+  .sc-chip { width: 34px; height: 26px; border-radius: 4px; background: rgba(255,255,255,0.25); float: right; }
+
+  /* ── RATES ── */
+  .rates { background: linear-gradient(135deg, var(--dark) 0%, #2D1000 100%); }
+
+  .rates .section-title { color: white; }
+  .rates .section-eyebrow { color: var(--gold); }
+  .rates .section-sub { color: rgba(255,255,255,0.6); }
+
+  .rates-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px;
+  }
+
+  .rate-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px; padding: 28px;
+    text-align: center; transition: all 0.35s; cursor: pointer;
+  }
+
+  .rate-card:hover {
+    background: rgba(232,93,4,0.15);
+    border-color: var(--orange);
+    transform: translateY(-4px);
+  }
+
+  .rate-icon { font-size: 30px; margin-bottom: 16px; }
+
+  .rate-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 40px; font-weight: 700;
+    background: linear-gradient(135deg, var(--orange-light), var(--gold));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    line-height: 1; margin-bottom: 4px;
+  }
+
+  .rate-unit { font-size: 14px; color: rgba(255,255,255,0.5); }
+  .rate-label { font-size: 13px; font-weight: 600; color: white; margin-top: 12px; }
+  .rate-sub { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 4px; }
+
+  /* ── LOANS ── */
+  .loans { background: white; }
+
+  .loans-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+
+  .loan-card {
+    border-radius: 20px; overflow: hidden;
+    border: 1px solid var(--border); transition: all 0.35s;
+  }
+
+  .loan-card:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(232,93,4,0.12); }
+
+  .loan-header {
+    padding: 28px 28px 20px;
+    background: var(--orange-pale);
+  }
+
+  .loan-icon { font-size: 32px; margin-bottom: 12px; }
+  .loan-name { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: var(--dark); }
+
+  .loan-body { padding: 20px 28px 28px; }
+
+  .loan-rate-row { display: flex; align-items: baseline; gap: 4px; margin-bottom: 16px; }
+  .loan-rate-num { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 700; color: var(--orange); }
+  .loan-rate-label { font-size: 13px; color: var(--muted); }
+
+  .loan-detail { font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 20px; }
+
+  .loan-meta { display: flex; gap: 16px; }
+  .loan-meta-item { display: flex; flex-direction: column; gap: 2px; }
+  .loan-meta-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; }
+  .loan-meta-val { font-size: 14px; font-weight: 700; color: var(--text); }
+
+  .loan-apply {
+    display: block; text-align: center; padding: 12px;
+    background: linear-gradient(135deg, var(--orange), var(--orange-light));
+    color: white; font-weight: 700; font-size: 13px;
+    text-decoration: none; margin-top: 20px; border-radius: 10px;
+    transition: all 0.25s; letter-spacing: 0.05em;
+  }
+
+  .loan-apply:hover { transform: scale(1.02); box-shadow: 0 8px 24px rgba(232,93,4,0.35); }
+
+  /* ── EMI CALCULATOR ── */
+  .calculator { background: var(--off-white); }
+
+  .calc-layout {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 64px; align-items: start;
+  }
+
+  .calc-box {
+    background: white; border-radius: 24px; padding: 40px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+  }
+
+  .calc-title { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--dark); margin-bottom: 28px; }
+
+  .input-group { margin-bottom: 24px; }
+  .input-group label { display: block; font-size: 12px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; }
+
+  .range-row { display: flex; align-items: center; gap: 16px; }
+
+  input[type="range"] {
+    flex: 1; -webkit-appearance: none;
+    height: 4px; border-radius: 4px;
+    background: var(--border); outline: none;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; width: 18px; height: 18px;
+    border-radius: 50%; background: var(--orange); cursor: pointer;
+    box-shadow: 0 2px 8px rgba(232,93,4,0.4);
+  }
+
+  .range-val {
+    min-width: 100px; text-align: right;
+    font-size: 16px; font-weight: 700; color: var(--orange);
+  }
+
+  .calc-result {
+    background: linear-gradient(135deg, var(--orange), var(--orange-light));
+    border-radius: 16px; padding: 24px; margin-top: 8px; color: white;
+  }
+
+  .calc-result-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+  .calc-result-row:last-child { margin-bottom: 0; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 12px; }
+  .cr-label { font-size: 13px; opacity: 0.85; }
+  .cr-val { font-size: 16px; font-weight: 700; }
+  .cr-val.big { font-family: 'Playfair Display', serif; font-size: 28px; }
+
+  .calc-visual { display: flex; flex-direction: column; gap: 24px; }
+
+  .donut-wrap {
+    background: white; border-radius: 20px; padding: 32px;
+    border: 1px solid var(--border); text-align: center;
+  }
+
+  .donut-title { font-size: 14px; font-weight: 600; color: var(--muted); margin-bottom: 20px; }
+
+  svg.donut { width: 180px; height: 180px; }
+
+  .donut-legend { display: flex; justify-content: center; gap: 24px; margin-top: 20px; }
+  .dl-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text); }
+  .dl-dot { width: 10px; height: 10px; border-radius: 50%; }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials { background: var(--off-white); }
+
+  .testi-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+  }
+
+  .testi-card {
+    background: white; border-radius: 20px; padding: 32px;
+    border: 1px solid var(--border); position: relative;
+    transition: all 0.3s;
+  }
+
+  .testi-card:hover { border-color: var(--orange); box-shadow: var(--shadow); transform: translateY(-4px); }
+
+  .testi-quote {
+    font-size: 40px; color: var(--orange); line-height: 0;
+    margin-bottom: 20px; font-family: serif;
+  }
+
+  .testi-text { font-size: 14.5px; color: var(--text); line-height: 1.7; margin-bottom: 24px; }
+
+  .testi-author { display: flex; align-items: center; gap: 14px; }
+
+  .testi-avatar {
+    width: 44px; height: 44px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; font-weight: 700; color: white;
+    background: linear-gradient(135deg, var(--orange), var(--gold));
+    flex-shrink: 0;
+  }
+
+  .testi-name { font-size: 14px; font-weight: 700; color: var(--dark); }
+  .testi-role { font-size: 12px; color: var(--muted); }
+
+  .stars { color: var(--gold); font-size: 13px; margin-top: 4px; }
+
+  /* ── DIGITAL BANKING ── */
+  .digital { background: white; }
+
+  .digital-layout {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 64px; align-items: center;
+  }
+
+  .app-mockup {
+    background: linear-gradient(135deg, var(--dark), #3D1F00);
+    border-radius: 40px; padding: 32px 24px;
+    width: 280px; margin: 0 auto;
+    box-shadow: 0 32px 80px rgba(0,0,0,0.25);
+    position: relative;
+  }
+
+  .app-status-bar {
+    display: flex; justify-content: space-between;
+    font-size: 10px; color: rgba(255,255,255,0.5);
+    margin-bottom: 20px;
+  }
+
+  .app-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+  .app-greeting { color: white; font-size: 13px; }
+  .app-greeting strong { font-size: 16px; display: block; }
+  .app-notif { width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; font-size: 14px; }
+
+  .app-balance-card {
+    background: linear-gradient(135deg, var(--orange), var(--orange-light));
+    border-radius: 20px; padding: 20px; margin-bottom: 20px;
+  }
+
+  .app-bal-label { font-size: 10px; color: rgba(255,255,255,0.75); text-transform: uppercase; letter-spacing: 0.1em; }
+  .app-bal-num { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700; color: white; margin: 4px 0 2px; }
+  .app-bal-change { font-size: 11px; color: rgba(255,255,255,0.75); }
+
+  .app-quick { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 20px; }
+  .app-quick-item { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  .app-quick-icon { width: 44px; height: 44px; border-radius: 12px; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; font-size: 18px; }
+  .app-quick-label { font-size: 9px; color: rgba(255,255,255,0.6); text-align: center; }
+
+  .app-tx-list { background: rgba(255,255,255,0.06); border-radius: 16px; padding: 14px; }
+  .app-tx-title { font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; }
+
+  .app-tx-row { display: flex; align-items: center; gap: 10px; padding: 8px 0; }
+  .app-tx-row:not(:last-child) { border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .app-tx-icon { width: 30px; height: 30px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; font-size: 13px; }
+  .app-tx-info { flex: 1; }
+  .app-tx-name { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.85); }
+  .app-tx-date { font-size: 9px; color: rgba(255,255,255,0.4); }
+  .app-tx-amt { font-size: 12px; font-weight: 700; }
+  .app-tx-amt.pos { color: #86efac; }
+  .app-tx-amt.neg { color: #fca5a5; }
+
+  .digital-features { display: flex; flex-direction: column; gap: 24px; }
+
+  .df-item {
+    display: flex; gap: 20px; align-items: flex-start;
+    padding: 20px; border-radius: 16px; border: 1px solid var(--border);
+    transition: all 0.25s;
+  }
+
+  .df-item:hover { border-color: var(--orange); background: var(--orange-pale); }
+
+  .df-icon-wrap { width: 48px; height: 48px; border-radius: 12px; background: var(--orange-pale); display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; transition: background 0.25s; }
+  .df-item:hover .df-icon-wrap { background: var(--orange); }
+
+  .df-title { font-size: 15px; font-weight: 700; color: var(--dark); margin-bottom: 4px; }
+  .df-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+  /* ── BRANCHES ── */
+  .branches { background: var(--off-white); }
+
+  .branches-layout {
+    display: grid; grid-template-columns: 1fr 1.4fr;
+    gap: 64px; align-items: start;
+  }
+
+  .branch-list { display: flex; flex-direction: column; gap: 16px; }
+
+  .branch-card {
+    background: white; border-radius: 16px; padding: 20px 24px;
+    border: 1px solid var(--border); transition: all 0.25s; cursor: pointer;
+  }
+
+  .branch-card.active, .branch-card:hover {
+    border-color: var(--orange);
+    box-shadow: 0 4px 20px rgba(232,93,4,0.1);
+  }
+
+  .branch-name { font-size: 15px; font-weight: 700; color: var(--dark); margin-bottom: 4px; }
+  .branch-addr { font-size: 13px; color: var(--muted); line-height: 1.5; }
+  .branch-timing { font-size: 11px; color: var(--orange); font-weight: 600; margin-top: 8px; }
+
+  .map-placeholder {
+    height: 380px; border-radius: 24px;
+    background: linear-gradient(135deg, var(--orange-pale), #FFF3E0);
+    border: 2px solid var(--border);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 12px; color: var(--muted);
+    font-size: 14px; position: relative; overflow: hidden;
+  }
+
+  .map-placeholder .map-icon { font-size: 48px; }
+
+  .map-pins { position: absolute; inset: 0; }
+  .map-pin {
+    position: absolute; width: 24px; height: 24px;
+    background: var(--orange); border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+    box-shadow: 0 4px 12px rgba(232,93,4,0.4);
+    animation: pinPop 0.5s ease;
+  }
+
+  .map-pin::after {
+    content: ''; position: absolute; inset: 4px;
+    background: white; border-radius: 50%;
+  }
+
+  @keyframes pinPop {
+    from { transform: rotate(-45deg) scale(0); }
+    to { transform: rotate(-45deg) scale(1); }
+  }
+
+  /* ── CONTACT / SUPPORT ── */
+  .support { background: linear-gradient(135deg, var(--dark), #2D1000); }
+
+  .support-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+  }
+
+  .support-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px; padding: 28px; text-align: center;
+    transition: all 0.3s; cursor: pointer;
+  }
+
+  .support-card:hover {
+    background: rgba(232,93,4,0.15); border-color: var(--orange);
+    transform: translateY(-4px);
+  }
+
+  .support-icon { font-size: 36px; margin-bottom: 16px; }
+  .support-title { font-size: 16px; font-weight: 700; color: white; margin-bottom: 8px; }
+  .support-info { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.6; }
+  .support-action { font-size: 13px; font-weight: 700; color: var(--gold); margin-top: 12px; }
+
+  .support-header { text-align: center; margin-bottom: 48px; }
+  .support-header .section-title { color: white; margin: 0 auto 12px; }
+  .support-header .section-eyebrow { color: var(--gold); }
+  .support-header .section-sub { color: rgba(255,255,255,0.6); margin: 0 auto 0; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark); color: rgba(255,255,255,0.7);
+    padding: 64px 80px 32px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .footer-top {
+    display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 48px; margin-bottom: 48px;
+  }
+
+  .footer-brand { }
+
+  .footer-logo {
+    display: flex; align-items: center; gap: 10px; margin-bottom: 16px;
+  }
+
+  .footer-logo img { height: 40px; filter: brightness(1.2); }
+
+  .footer-logo-text .name {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px; font-weight: 700; color: white;
+  }
+
+  .footer-logo-text .sub { font-size: 9px; letter-spacing: 0.2em; color: var(--muted); text-transform: uppercase; }
+
+  .footer-tagline { font-size: 13px; line-height: 1.7; color: rgba(255,255,255,0.5); max-width: 260px; margin-bottom: 20px; }
+
+  .footer-social { display: flex; gap: 10px; }
+  .social-btn {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; cursor: pointer; text-decoration: none;
+    transition: all 0.25s;
+  }
+
+  .social-btn:hover { background: var(--orange); border-color: var(--orange); }
+
+  .footer-col-title {
+    font-size: 12px; font-weight: 700; color: white;
+    text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 20px;
+  }
+
+  .footer-links { display: flex; flex-direction: column; gap: 10px; }
+  .footer-links a { font-size: 13.5px; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--orange); }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 24px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+
+  .footer-bottom p { font-size: 12px; color: rgba(255,255,255,0.35); }
+  .footer-badges { display: flex; gap: 12px; }
+  .badge {
+    padding: 4px 12px; border-radius: 100px;
+    background: rgba(255,255,255,0.08); font-size: 10px;
+    color: rgba(255,255,255,0.4); font-weight: 600; letter-spacing: 0.05em;
+  }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal {
+    opacity: 0; transform: translateY(32px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── LOGIN MODAL ── */
+  .modal-overlay {
+    position: fixed; inset: 0; z-index: 9999;
+    background: rgba(0,0,0,0.6); backdrop-filter: blur(6px);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none; transition: opacity 0.3s;
+  }
+
+  .modal-overlay.open { opacity: 1; pointer-events: all; }
+
+  .modal-box {
+    background: white; border-radius: 28px; padding: 48px;
+    width: 400px; max-width: 90vw;
+    transform: scale(0.9); transition: transform 0.3s;
+    box-shadow: 0 32px 80px rgba(0,0,0,0.25);
+  }
+
+  .modal-overlay.open .modal-box { transform: scale(1); }
+
+  .modal-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 28px; }
+  .modal-logo img { height: 40px; }
+
+  .modal-title { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; color: var(--dark); margin-bottom: 6px; }
+  .modal-sub { font-size: 13px; color: var(--muted); margin-bottom: 28px; }
+
+  .form-field { margin-bottom: 18px; }
+  .form-field label { display: block; font-size: 12px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 6px; }
+  .form-field input {
+    width: 100%; padding: 12px 16px; border-radius: 10px;
+    border: 1.5px solid var(--border); font-size: 14px;
+    color: var(--text); outline: none; transition: border 0.2s;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .form-field input:focus { border-color: var(--orange); }
+
+  .modal-close {
+    position: absolute; top: 20px; right: 20px;
+    width: 32px; height: 32px; border-radius: 50%; border: none;
+    background: var(--border); cursor: pointer; font-size: 16px;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .modal-box { position: relative; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    section { padding: 72px 40px; }
+    nav { padding: 0 32px; }
+    .hero { padding: 120px 40px 80px; }
+    .hero-visual { display: none; }
+    .accounts-layout, .calc-layout, .digital-layout, .branches-layout { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 640px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    section { padding: 56px 20px; }
+    .hero { padding: 100px 20px 56px; }
+    .hero-stats { flex-wrap: wrap; gap: 28px; }
+    .footer-top { grid-template-columns: 1fr; gap: 32px; }
+    footer { padding: 48px 20px 24px; }
+    .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <a class="nav-logo" href="#">
+    <img src="/images/logo.jfif" alt="Shritaashvi Logo">
+    <div class="nav-brand">
+      <span class="name">Shritaashvi</span>
+      <span class="sub">Micro Foundation</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#accounts">Accounts</a></li>
+    <li><a href="#loans">Loans</a></li>
+    <li><a href="#calculator">EMI Calculator</a></li>
+    <li><a href="#branches">Branches</a></li>
+    <li><a href="#support">Support</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a class="btn btn-outline" href="#" onclick="openModal()">Login</a>
+    <a class="btn btn-primary" href="#">Open Account</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg-circle"></div>
+  <div class="hero-bg-circle"></div>
+
+  <div class="hero-eyebrow">
+    <span class="dot"></span>
+    RBI Registered Micro Finance Institution
+  </div>
+
+  <h1>Banking That<br><span>Empowers</span><br>Every Family</h1>
+
+  <p class="hero-sub">Shritaashvi Micro Foundation brings secure, accessible banking to every community — from micro-savings to business loans, your financial journey starts here.</p>
+
+  <div class="hero-actions">
+    <a class="btn btn-primary" href="#accounts">Open Free Account</a>
+    <a class="btn btn-outline" href="#loans">Explore Loans</a>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat-item">
+      <span class="stat-num" data-count="52000">0</span>
+      <span class="stat-label">Active Members</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num" data-count="18" data-prefix="₹" data-suffix="Cr+">0</span>
+      <span class="stat-label">Loans Disbursed</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num" data-count="96" data-suffix="%">0</span>
+      <span class="stat-label">Repayment Rate</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num" data-count="12">0</span>
+      <span class="stat-label">Branches Across India</span>
+    </div>
+  </div>
+
+  <!-- Hero Visual -->
+  <div class="hero-visual">
+    <div class="hero-card">
+      <div class="card-header">
+        <div class="card-chip"></div>
+        <div class="card-logo-sm">Shritaashvi</div>
+      </div>
+      <div class="card-number">4732  ••••  ••••  8841</div>
+      <div class="card-footer-row">
+        <div>
+          <div class="card-label">Account Holder</div>
+          <div class="card-value">Priya Sharma</div>
+        </div>
+        <div class="balance-pill">
+          <div class="card-label">Balance</div>
+          <div class="balance-amount">₹42,500</div>
+        </div>
+      </div>
+    </div>
+    <div class="mini-tx">
+      <div class="mini-tx-title">Recent Transactions</div>
+      <div class="tx-row">
+        <div class="tx-icon">💰</div>
+        <div class="tx-info">
+          <div class="tx-name">Salary Credit</div>
+          <div class="tx-date">Today, 9:00 AM</div>
+        </div>
+        <div class="tx-amt credit">+₹18,000</div>
+      </div>
+      <div class="tx-row">
+        <div class="tx-icon">🏪</div>
+        <div class="tx-info">
+          <div class="tx-name">Grocery Store</div>
+          <div class="tx-date">Yesterday</div>
+        </div>
+        <div class="tx-amt debit">−₹840</div>
+      </div>
+      <div class="tx-row">
+        <div class="tx-icon">📱</div>
+        <div class="tx-info">
+          <div class="tx-name">Mobile Recharge</div>
+          <div class="tx-date">2 days ago</div>
+        </div>
+        <div class="tx-amt debit">−₹199</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track" id="tickerTrack">
+    <span class="ticker-item">🏦 FD Interest Rate: <strong>8.50% p.a.</strong> <span class="up">▲0.25%</span></span>
+    <span class="ticker-item">💰 Savings Account: <strong>4.00% p.a.</strong></span>
+    <span class="ticker-item">🏠 Home Loan: Starting <strong>8.75% p.a.</strong> <span class="dn">▼0.10%</span></span>
+    <span class="ticker-item">📈 Gold Rate: <strong>₹68,450/10g</strong> <span class="up">▲₹320</span></span>
+    <span class="ticker-item">🚗 Vehicle Loan: <strong>9.25% p.a.</strong></span>
+    <span class="ticker-item">💼 Business Loan: Starting <strong>10.50% p.a.</strong></span>
+    <span class="ticker-item">🎓 Education Loan: <strong>9.00% p.a.</strong></span>
+    <span class="ticker-item">💳 Zero Balance Account: <strong>Now Available!</strong></span>
+    <span class="ticker-item">🏦 FD Interest Rate: <strong>8.50% p.a.</strong> <span class="up">▲0.25%</span></span>
+    <span class="ticker-item">💰 Savings Account: <strong>4.00% p.a.</strong></span>
+    <span class="ticker-item">🏠 Home Loan: Starting <strong>8.75% p.a.</strong> <span class="dn">▼0.10%</span></span>
+    <span class="ticker-item">📈 Gold Rate: <strong>₹68,450/10g</strong> <span class="up">▲₹320</span></span>
+    <span class="ticker-item">🚗 Vehicle Loan: <strong>9.25% p.a.</strong></span>
+    <span class="ticker-item">💼 Business Loan: Starting <strong>10.50% p.a.</strong></span>
+    <span class="ticker-item">🎓 Education Loan: <strong>9.00% p.a.</strong></span>
+    <span class="ticker-item">💳 Zero Balance Account: <strong>Now Available!</strong></span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-header reveal">
+    <div class="section-eyebrow">What We Offer</div>
+    <div class="section-title">Complete Banking Solutions for Every Need</div>
+    <div class="section-sub">From everyday transactions to long-term financial planning, we cover every aspect of your financial life.</div>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-icon-wrap"><div class="service-icon">💳</div></div>
+      <div class="service-name">Savings Account</div>
+      <div class="service-desc">Earn 4% interest annually with zero minimum balance and free debit card included.</div>
+      <div class="service-arrow">↗</div>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon-wrap"><div class="service-icon">📊</div></div>
+      <div class="service-name">Fixed Deposits</div>
+      <div class="service-desc">Grow your money with up to 8.5% p.a. on deposits from 7 days to 5 years.</div>
+      <div class="service-arrow">↗</div>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon-wrap"><div class="service-icon">🏠</div></div>
+      <div class="service-name">Home Loans</div>
+      <div class="service-desc">Make your dream home a reality with low EMIs, fast approval, and flexible tenure.</div>
+      <div class="service-arrow">↗</div>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon-wrap"><div class="service-icon">💼</div></div>
+      <div class="service-name">Business Finance</div>
+      <div class="service-desc">Fuel your enterprise with working capital loans, MSME credit, and more.</div>
+      <div class="service-arrow">↗</div>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon-wrap"><div class="service-icon">📱</div></div>
+      <div class="service-name">Digital Banking</div>
+      <div class="service-desc">Manage everything from our mobile app — payments, transfers, statements, and more.</div>
+      <div class="service-arrow">↗</div>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon-wrap"><div class="service-icon">🌾</div></div>
+      <div class="service-name">Micro Finance</div>
+      <div class="service-desc">Empowering rural women and small entrepreneurs with group lending and self-help support.</div>
+      <div class="service-arrow">↗</div>
+    </div>
+  </div>
+</section>
+
+<!-- ACCOUNTS -->
+<section class="accounts" id="accounts">
+  <div class="accounts-layout">
+    <div>
+      <div class="section-eyebrow reveal">Account Types</div>
+      <div class="section-title reveal">Choose the Account That Fits Your Life</div>
+      <div class="section-sub reveal">Whether you're saving for tomorrow or managing business cash flow, we have the right account for you.</div>
+
+      <div class="account-tabs reveal">
+        <button class="tab-btn active" onclick="switchTab(this, 'savings')">Savings</button>
+        <button class="tab-btn" onclick="switchTab(this, 'current')">Current</button>
+        <button class="tab-btn" onclick="switchTab(this, 'fd')">Fixed Deposit</button>
+        <button class="tab-btn" onclick="switchTab(this, 'rd')">Recurring</button>
+      </div>
+
+      <div class="account-features" id="account-features"></div>
+
+      <div style="margin-top:32px" class="reveal">
+        <a class="btn btn-primary" href="#" style="display:inline-flex">Open Account Now →</a>
+      </div>
+    </div>
+
+    <div class="account-visual reveal">
+      <div class="account-card-stack">
+        <div class="stack-card">
+          <div class="sc-logo">Shritaashvi <div class="sc-chip"></div></div>
+          <div class="sc-num">4732 •••• •••• 1122</div>
+          <div class="sc-row"><div><div class="card-label">HOLDER</div><div class="card-value" style="color:rgba(255,255,255,0.7)">Ramesh K.</div></div><div><div class="card-label">EXPIRES</div><div class="card-value" style="color:rgba(255,255,255,0.7)">09/28</div></div></div>
+        </div>
+        <div class="stack-card">
+          <div class="sc-logo">Shritaashvi <div class="sc-chip"></div></div>
+          <div class="sc-num">8841 •••• •••• 3309</div>
+          <div class="sc-row"><div><div class="card-label">HOLDER</div><div class="card-value" style="color:rgba(255,255,255,0.8)">Sunita M.</div></div><div><div class="card-label">EXPIRES</div><div class="card-value" style="color:rgba(255,255,255,0.8)">12/27</div></div></div>
+        </div>
+        <div class="stack-card">
+          <div class="sc-logo" style="color:var(--dark)">Shritaashvi <div class="sc-chip" style="background:rgba(0,0,0,0.15)"></div></div>
+          <div class="sc-num" style="color:var(--dark)">2291 •••• •••• 7764</div>
+          <div class="sc-row">
+            <div><div class="card-label" style="color:var(--muted)">HOLDER</div><div class="card-value" style="color:var(--dark)">Priya S.</div></div>
+            <div><div class="card-label" style="color:var(--muted)">EXPIRES</div><div class="card-value" style="color:var(--dark)">06/29</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTEREST RATES -->
+<section class="rates" id="rates">
+  <div class="reveal" style="text-align:center; margin-bottom:56px">
+    <div class="section-eyebrow">Current Rates</div>
+    <div class="section-title" style="margin:0 auto 12px; color:white">Competitive Rates, Transparent Pricing</div>
+    <div class="section-sub" style="margin: 0 auto; color:rgba(255,255,255,0.55)">All rates effective as of June 2026. Subject to RBI guidelines.</div>
+  </div>
+  <div class="rates-grid">
+    <div class="rate-card reveal">
+      <div class="rate-icon">💰</div>
+      <div class="rate-value">4.0%</div>
+      <div class="rate-unit">per annum</div>
+      <div class="rate-label">Savings Account</div>
+      <div class="rate-sub">On daily balance</div>
+    </div>
+    <div class="rate-card reveal">
+      <div class="rate-icon">📊</div>
+      <div class="rate-value">8.5%</div>
+      <div class="rate-unit">per annum</div>
+      <div class="rate-label">Fixed Deposit</div>
+      <div class="rate-sub">Up to 3 years tenure</div>
+    </div>
+    <div class="rate-card reveal">
+      <div class="rate-icon">🔁</div>
+      <div class="rate-value">7.5%</div>
+      <div class="rate-unit">per annum</div>
+      <div class="rate-label">Recurring Deposit</div>
+      <div class="rate-sub">12–60 months</div>
+    </div>
+    <div class="rate-card reveal">
+      <div class="rate-icon">🏠</div>
+      <div class="rate-value">8.75%</div>
+      <div class="rate-unit">per annum</div>
+      <div class="rate-label">Home Loan</div>
+      <div class="rate-sub">Starting rate, floating</div>
+    </div>
+    <div class="rate-card reveal">
+      <div class="rate-icon">💼</div>
+      <div class="rate-value">10.5%</div>
+      <div class="rate-unit">per annum</div>
+      <div class="rate-label">Business Loan</div>
+      <div class="rate-sub">MSME special rates available</div>
+    </div>
+    <div class="rate-card reveal">
+      <div class="rate-icon">🌾</div>
+      <div class="rate-value">12.0%</div>
+      <div class="rate-unit">per annum</div>
+      <div class="rate-label">Micro Finance</div>
+      <div class="rate-sub">Group lending, no collateral</div>
+    </div>
+  </div>
+</section>
+
+<!-- LOANS -->
+<section class="loans" id="loans">
+  <div class="reveal" style="margin-bottom:56px">
+    <div class="section-eyebrow">Loan Products</div>
+    <div class="section-title">Loans Designed Around Your Dreams</div>
+    <div class="section-sub">Quick approvals, minimal paperwork, and flexible repayment — we make borrowing simple.</div>
+  </div>
+  <div class="loans-grid">
+    <div class="loan-card reveal">
+      <div class="loan-header">
+        <div class="loan-icon">🏠</div>
+        <div class="loan-name">Home Loan</div>
+      </div>
+      <div class="loan-body">
+        <div class="loan-rate-row">
+          <span class="loan-rate-num">8.75%</span>
+          <span class="loan-rate-label">p.a. onwards</span>
+        </div>
+        <div class="loan-detail">Finance your dream home with up to 90% of property value, flexible repayment up to 30 years.</div>
+        <div class="loan-meta">
+          <div class="loan-meta-item"><div class="loan-meta-label">Max Amount</div><div class="loan-meta-val">₹50 Lakh</div></div>
+          <div class="loan-meta-item"><div class="loan-meta-label">Tenure</div><div class="loan-meta-val">Up to 30 Yrs</div></div>
+          <div class="loan-meta-item"><div class="loan-meta-label">Processing</div><div class="loan-meta-val">3 Days</div></div>
+        </div>
+        <a class="loan-apply" href="#">Apply Now →</a>
+      </div>
+    </div>
+    <div class="loan-card reveal">
+      <div class="loan-header">
+        <div class="loan-icon">🚗</div>
+        <div class="loan-name">Vehicle Loan</div>
+      </div>
+      <div class="loan-body">
+        <div class="loan-rate-row">
+          <span class="loan-rate-num">9.25%</span>
+          <span class="loan-rate-label">p.a. onwards</span>
+        </div>
+        <div class="loan-detail">Get on the road faster with auto loans for cars, two-wheelers, and commercial vehicles.</div>
+        <div class="loan-meta">
+          <div class="loan-meta-item"><div class="loan-meta-label">Max Amount</div><div class="loan-meta-val">₹15 Lakh</div></div>
+          <div class="loan-meta-item"><div class="loan-meta-label">Tenure</div><div class="loan-meta-val">Up to 7 Yrs</div></div>
+          <div class="loan-meta-item"><div class="loan-meta-label">Processing</div><div class="loan-meta-val">24 Hours</div></div>
+        </div>
+        <a class="loan-apply" href="#">Apply Now →</a>
+      </div>
+    </div>
+    <div class="loan-card reveal">
+      <div class="loan-header">
+        <div class="loan-icon">💼</div>
+        <div class="loan-name">Business Loan</div>
+      </div>
+      <div class="loan-body">
+        <div class="loan-rate-row">
+          <span class="loan-rate-num">10.5%</span>
+          <span class="loan-rate-label">p.a. onwards</span>
+        </div>
+        <div class="loan-detail">Scale your business with collateral-free loans for MSMEs, shops, and small enterprises.</div>
+        <div class="loan-meta">
+          <div class="loan-meta-item"><div class="loan-meta-label">Max Amount</div><div class="loan-meta-val">₹25 Lakh</div></div>
+          <div class="loan-meta-item"><div class="loan-meta-label">Tenure</div><div class="loan-meta-val">Up to 5 Yrs</div></div>
+          <div class="loan-meta-item"><div class="loan-meta-label">Processing</div><div class="loan-meta-val">48 Hours</div></div>
+        </div>
+        <a class="loan-apply" href="#">Apply Now →</a>
+      </div>
+    </div>
+    <div class="loan-card reveal">
+      <div class="loan-header">
+        <div class="loan-icon">🎓</div>
+        <div class="loan-name">Education Loan</div>
+      </div>
+      <div class="loan-body">
+        <div class="loan-rate-row">
+          <span class="loan-rate-num">9.0%</span>
+          <span class="loan-rate-label">p.a. onwards</span>
+        </div>
+        <div class="loan-detail">Invest in your future with education loans covering tuition, hostel, books, and more.</div>
+        <div class="loan-meta">
+          <div class="loan-meta-item"><div class="loan-meta-label">Max Amount</div><div class="loan-meta-val">₹20 Lakh</div></div>
+          <div class="loan-meta-item"><div class="loan-meta-label">Tenure</div><div class="loan-meta-val">Up to 15 Yrs</div></div>
+          <div class="loan-meta-item"><div class="loan-meta-label">Processing</div><div class="loan-meta-val">5 Days</div></div>
+        </div>
+        <a class="loan-apply" href="#">Apply Now →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EMI CALCULATOR -->
+<section class="calculator" id="calculator">
+  <div class="calc-layout">
+    <div>
+      <div class="section-eyebrow reveal">EMI Calculator</div>
+      <div class="section-title reveal">Plan Your Loan Before You Apply</div>
+      <div class="section-sub reveal">Adjust the sliders to see your monthly EMI, total interest, and total payment instantly.</div>
+
+      <div class="calc-box reveal">
+        <div class="calc-title">Loan EMI Calculator</div>
+        <div class="input-group">
+          <label>Loan Amount</label>
+          <div class="range-row">
+            <input type="range" id="loanAmt" min="10000" max="5000000" step="10000" value="500000" oninput="calcEMI()">
+            <span class="range-val" id="loanAmtVal">₹5,00,000</span>
+          </div>
+        </div>
+        <div class="input-group">
+          <label>Interest Rate (% p.a.)</label>
+          <div class="range-row">
+            <input type="range" id="rate" min="6" max="24" step="0.25" value="9" oninput="calcEMI()">
+            <span class="range-val" id="rateVal">9.00%</span>
+          </div>
+        </div>
+        <div class="input-group">
+          <label>Tenure (Years)</label>
+          <div class="range-row">
+            <input type="range" id="tenure" min="1" max="30" step="1" value="5" oninput="calcEMI()">
+            <span class="range-val" id="tenureVal">5 Yrs</span>
+          </div>
+        </div>
+        <div class="calc-result">
+          <div class="calc-result-row"><span class="cr-label">Monthly EMI</span><span class="cr-val big" id="emiVal">₹10,379</span></div>
+          <div class="calc-result-row"><span class="cr-label">Total Interest</span><span class="cr-val" id="intVal">₹1,22,740</span></div>
+          <div class="calc-result-row"><span class="cr-label">Total Payment</span><span class="cr-val" id="totalVal">₹6,22,740</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="calc-visual reveal">
+      <div class="donut-wrap">
+        <div class="donut-title">Loan Breakdown</div>
+        <svg class="donut" id="donutSVG" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="100" cy="100" r="70" fill="none" stroke="#FFF3E0" stroke-width="32"/>
+          <circle id="principalArc" cx="100" cy="100" r="70" fill="none" stroke="#E85D04" stroke-width="32"
+            stroke-dasharray="439.82" stroke-dashoffset="0" stroke-linecap="round"
+            transform="rotate(-90 100 100)" style="transition: stroke-dashoffset 0.6s ease"/>
+          <circle id="interestArc" cx="100" cy="100" r="70" fill="none" stroke="#FAA307" stroke-width="32"
+            stroke-dasharray="439.82" stroke-dashoffset="0" stroke-linecap="round"
+            transform="rotate(-90 100 100)" style="transition: all 0.6s ease"/>
+          <text x="100" y="95" text-anchor="middle" font-size="13" fill="#2D1B00" font-weight="700" font-family="Playfair Display, serif" id="donutPct">80.4%</text>
+          <text x="100" y="114" text-anchor="middle" font-size="10" fill="#7A5A3A">Principal</text>
+        </svg>
+        <div class="donut-legend">
+          <div class="dl-item"><div class="dl-dot" style="background:var(--orange)"></div> Principal</div>
+          <div class="dl-item"><div class="dl-dot" style="background:var(--gold)"></div> Interest</div>
+        </div>
+      </div>
+
+      <div style="background:white; border-radius:16px; padding:24px; border:1px solid var(--border); margin-top:20px">
+        <div style="font-size:13px; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:16px">Year-wise Breakdown</div>
+        <div id="yearBar" style="display:flex; flex-direction:column; gap:8px"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIGITAL BANKING -->
+<section class="digital" id="digital">
+  <div class="digital-layout">
+    <div class="reveal" style="display:flex; justify-content:center">
+      <div class="app-mockup">
+        <div class="app-status-bar">
+          <span>9:41</span>
+          <span>●●● 📶 🔋</span>
+        </div>
+        <div class="app-header">
+          <div class="app-greeting">
+            Good Morning, <strong>Priya 👋</strong>
+          </div>
+          <div class="app-notif">🔔</div>
+        </div>
+        <div class="app-balance-card">
+          <div class="app-bal-label">Total Balance</div>
+          <div class="app-bal-num">₹42,500.00</div>
+          <div class="app-bal-change">↑ ₹18,000 credited today</div>
+        </div>
+        <div class="app-quick">
+          <div class="app-quick-item"><div class="app-quick-icon">📤</div><div class="app-quick-label">Send</div></div>
+          <div class="app-quick-item"><div class="app-quick-icon">📥</div><div class="app-quick-label">Request</div></div>
+          <div class="app-quick-item"><div class="app-quick-icon">📱</div><div class="app-quick-label">Recharge</div></div>
+          <div class="app-quick-item"><div class="app-quick-icon">📄</div><div class="app-quick-label">Statement</div></div>
+        </div>
+        <div class="app-tx-list">
+          <div class="app-tx-title">Recent Activity</div>
+          <div class="app-tx-row">
+            <div class="app-tx-icon">💰</div>
+            <div class="app-tx-info"><div class="app-tx-name">Salary Credit</div><div class="app-tx-date">Today</div></div>
+            <div class="app-tx-amt pos">+₹18,000</div>
+          </div>
+          <div class="app-tx-row">
+            <div class="app-tx-icon">🏪</div>
+            <div class="app-tx-info"><div class="app-tx-name">BigBasket</div><div class="app-tx-date">Yesterday</div></div>
+            <div class="app-tx-amt neg">−₹840</div>
+          </div>
+          <div class="app-tx-row">
+            <div class="app-tx-icon">⚡</div>
+            <div class="app-tx-info"><div class="app-tx-name">Electricity Bill</div><div class="app-tx-date">3 days ago</div></div>
+            <div class="app-tx-amt neg">−₹1,240</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="section-eyebrow reveal">Mobile Banking</div>
+      <div class="section-title reveal">Your Bank in Your Pocket, 24×7</div>
+      <div class="section-sub reveal">Everything you need, at your fingertips. Available on Android and iOS.</div>
+      <div class="digital-features">
+        <div class="df-item reveal">
+          <div class="df-icon-wrap">🔒</div>
+          <div><div class="df-title">Bank-Grade Security</div><div class="df-desc">256-bit encryption, biometric login, and real-time fraud alerts keep your money safe always.</div></div>
+        </div>
+        <div class="df-item reveal">
+          <div class="df-icon-wrap">⚡</div>
+          <div><div class="df-title">Instant UPI & IMPS</div><div class="df-desc">Send and receive money in seconds — to any bank account or UPI ID across India.</div></div>
+        </div>
+        <div class="df-item reveal">
+          <div class="df-icon-wrap">📊</div>
+          <div><div class="df-title">Smart Spending Insights</div><div class="df-desc">Auto-categorize expenses, track budgets, and get monthly financial reports built in.</div></div>
+        </div>
+        <div class="df-item reveal">
+          <div class="df-icon-wrap">🌐</div>
+          <div><div class="df-title">Pay Bills & More</div><div class="df-desc">Electricity, water, DTH, mobile, insurance — pay any bill from one place without charges.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="reveal" style="text-align:center; margin-bottom:56px">
+    <div class="section-eyebrow">Testimonials</div>
+    <div class="section-title" style="margin:0 auto 12px">Our Members Speak for Us</div>
+    <div class="section-sub" style="margin:0 auto">Real stories from families and businesses we've helped grow.</div>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card reveal">
+      <div class="testi-quote">"</div>
+      <div class="testi-text">I got a home loan in just 3 days. The process was transparent, the staff was helpful, and the interest rate was the best I found anywhere. Shritaashvi changed my family's life.</div>
+      <div class="testi-author">
+        <div class="testi-avatar">R</div>
+        <div>
+          <div class="testi-name">Ramesh Kumar</div>
+          <div class="testi-role">Home Loan Customer, Delhi</div>
+          <div class="stars">★★★★★</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-quote">"</div>
+      <div class="testi-text">As a small grocery store owner, the business loan from Shritaashvi helped me expand my stock. No collateral needed, and the repayment was structured perfectly for seasonal income.</div>
+      <div class="testi-author">
+        <div class="testi-avatar">S</div>
+        <div>
+          <div class="testi-name">Sunita Mehta</div>
+          <div class="testi-role">Business Loan Customer, Jaipur</div>
+          <div class="stars">★★★★★</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-quote">"</div>
+      <div class="testi-text">The micro finance group helped 12 women in our village start their own businesses. The support goes beyond money — they trained us in financial literacy too. Truly empowering.</div>
+      <div class="testi-author">
+        <div class="testi-avatar">P</div>
+        <div>
+          <div class="testi-name">Padma Devi</div>
+          <div class="testi-role">SHG Group Leader, Rajasthan</div>
+          <div class="stars">★★★★★</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BRANCHES -->
+<section class="branches" id="branches">
+  <div class="branches-layout">
+    <div>
+      <div class="section-eyebrow reveal">Our Network</div>
+      <div class="section-title reveal">Find a Branch Near You</div>
+      <div class="section-sub reveal">With 12 branches across India and counting, we're always close to you.</div>
+      <div class="branch-list">
+        <div class="branch-card active reveal">
+          <div class="branch-name">📍 Head Office – New Delhi</div>
+          <div class="branch-addr">45, Connaught Place, Central Delhi – 110001</div>
+          <div class="branch-timing">Mon–Sat: 9:30 AM – 5:00 PM | IFSC: SMFB0001</div>
+        </div>
+        <div class="branch-card reveal">
+          <div class="branch-name">📍 Jaipur Branch</div>
+          <div class="branch-addr">12, MI Road, Jaipur, Rajasthan – 302001</div>
+          <div class="branch-timing">Mon–Sat: 9:30 AM – 5:00 PM | IFSC: SMFB0002</div>
+        </div>
+        <div class="branch-card reveal">
+          <div class="branch-name">📍 Lucknow Branch</div>
+          <div class="branch-addr">78, Hazratganj, Lucknow, UP – 226001</div>
+          <div class="branch-timing">Mon–Sat: 9:30 AM – 5:00 PM | IFSC: SMFB0003</div>
+        </div>
+        <div class="branch-card reveal">
+          <div class="branch-name">📍 Ahmedabad Branch</div>
+          <div class="branch-addr">22, CG Road, Navrangpura, Ahmedabad – 380009</div>
+          <div class="branch-timing">Mon–Sat: 9:30 AM – 5:00 PM | IFSC: SMFB0004</div>
+        </div>
+      </div>
+    </div>
+    <div class="map-placeholder reveal">
+      <div class="map-pins">
+        <div class="map-pin" style="top:28%; left:42%"></div>
+        <div class="map-pin" style="top:38%; left:35%" ></div>
+        <div class="map-pin" style="top:33%; left:52%"></div>
+        <div class="map-pin" style="top:45%; left:30%"></div>
+        <div class="map-pin" style="top:55%; left:48%"></div>
+        <div class="map-pin" style="top:50%; left:60%"></div>
+      </div>
+      <div class="map-icon">🗺️</div>
+      <div style="font-weight:700; color:var(--text)">Interactive Branch Map</div>
+      <div style="font-size:13px">12 branches across India</div>
+      <a class="btn btn-primary" href="#" style="margin-top:8px">Find Nearest Branch</a>
+    </div>
+  </div>
+</section>
+
+<!-- SUPPORT -->
+<section class="support" id="support">
+  <div class="support-header reveal">
+    <div class="section-eyebrow">Customer Support</div>
+    <div class="section-title">We're Here When You Need Us</div>
+    <div class="section-sub">Round-the-clock support through multiple channels — because your money never sleeps.</div>
+  </div>
+  <div class="support-grid">
+    <div class="support-card reveal">
+      <div class="support-icon">📞</div>
+      <div class="support-title">Phone Banking</div>
+      <div class="support-info">Talk to a banking expert. Available 24×7, 365 days a year.</div>
+      <div class="support-action">1800-XXX-XXXX (Toll Free)</div>
+    </div>
+    <div class="support-card reveal">
+      <div class="support-icon">💬</div>
+      <div class="support-title">Live Chat</div>
+      <div class="support-info">Chat with our AI assistant or connect to a human agent in seconds.</div>
+      <div class="support-action">Start Chat →</div>
+    </div>
+    <div class="support-card reveal">
+      <div class="support-icon">📧</div>
+      <div class="support-title">Email Support</div>
+      <div class="support-info">Send us your query and get a response within 4 business hours.</div>
+      <div class="support-action">support@shritaashvi.in</div>
+    </div>
+    <div class="support-card reveal">
+      <div class="support-icon">🏢</div>
+      <div class="support-title">Visit Branch</div>
+      <div class="support-info">Walk into any of our 12 branches for face-to-face banking assistance.</div>
+      <div class="support-action">Find Branch →</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <img src="/mnt/user-data/uploads/1782729028379_image.png" alt="Shritaashvi Logo">
+        <div class="footer-logo-text">
+          <div class="name">Shritaashvi</div>
+          <div class="sub">Micro Foundation</div>
+        </div>
+      </div>
+      <div class="footer-tagline">Empowering families and communities with accessible, dignified banking services across India since 2010.</div>
+      <div class="footer-social">
+        <a class="social-btn" href="#">𝕏</a>
+        <a class="social-btn" href="#">f</a>
+        <a class="social-btn" href="#">in</a>
+        <a class="social-btn" href="#">▶</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Services</div>
+      <div class="footer-links">
+        <a href="#">Savings Account</a>
+        <a href="#">Current Account</a>
+        <a href="#">Fixed Deposit</a>
+        <a href="#">Home Loan</a>
+        <a href="#">Business Loan</a>
+        <a href="#">Micro Finance</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Quick Links</div>
+      <div class="footer-links">
+        <a href="#">About Us</a>
+        <a href="#">Careers</a>
+        <a href="#">Investor Relations</a>
+        <a href="#">Press & Media</a>
+        <a href="#">CSR Activities</a>
+        <a href="#">Grievance Redressal</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Legal</div>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">MITC</a>
+        <a href="#">Interest Rate Policy</a>
+        <a href="#">Fraud Awareness</a>
+        <a href="#">RBI Guidelines</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Shritaashvi Micro Foundation. All rights reserved. Registered with RBI. Member: DICGC insured up to ₹5 Lakh.</p>
+    <div class="footer-badges">
+      <span class="badge">RBI Registered</span>
+      <span class="badge">DICGC Insured</span>
+      <span class="badge">ISO 27001</span>
+    </div>
+  </div>
+</footer>
+
+<!-- LOGIN MODAL -->
+<div class="modal-overlay" id="loginModal" onclick="closeModal(event)">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal(null, true)">✕</button>
+    <div class="modal-logo">
+      <img src="/mnt/user-data/uploads/1782729028379_image.png" alt="Logo">
+    </div>
+    <div class="modal-title">Welcome Back</div>
+    <div class="modal-sub">Login to your Shritaashvi Micro Foundation account</div>
+    <div class="form-field">
+      <label>Account Number / Mobile</label>
+      <input type="text" placeholder="Enter your account number or mobile">
+    </div>
+    <div class="form-field">
+      <label>MPIN / Password</label>
+      <input type="password" placeholder="Enter your MPIN">
+    </div>
+    <div style="display:flex; justify-content:flex-end; margin-bottom:20px">
+      <a href="#" style="font-size:12px; color:var(--orange); text-decoration:none; font-weight:600">Forgot Password?</a>
+    </div>
+    <button class="btn btn-primary" style="width:100%; padding:14px; font-size:15px; border-radius:10px">Login Securely</button>
+    <div style="text-align:center; margin-top:16px; font-size:13px; color:var(--muted)">
+      Don't have an account? <a href="#" style="color:var(--orange); font-weight:700; text-decoration:none">Open one now →</a>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── COUNTER ANIMATION ──
+const counters = document.querySelectorAll('[data-count]');
+const countObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+      entry.target.classList.add('counted');
+      const target = +entry.target.dataset.count;
+      const prefix = entry.target.dataset.prefix || '';
+      const suffix = entry.target.dataset.suffix || '';
+      let cur = 0;
+      const step = target / 60;
+      const timer = setInterval(() => {
+        cur = Math.min(cur + step, target);
+        const formatted = cur >= 1000 ? Math.floor(cur).toLocaleString('en-IN') : Math.floor(cur);
+        entry.target.textContent = prefix + formatted + suffix;
+        if (cur >= target) clearInterval(timer);
+      }, 20);
+    }
+  });
+}, { threshold: 0.5 });
+
+counters.forEach(c => countObserver.observe(c));
+
+// ── SCROLL REVEAL ──
+const reveals = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), (Array.from(reveals).indexOf(e.target) % 4) * 80);
+    }
+  });
+}, { threshold: 0.1 });
+reveals.forEach(r => revealObserver.observe(r));
+
+// ── ACCOUNT TABS ──
+const accountData = {
+  savings: [
+    { icon: '✓', text: 'Zero minimum balance required' },
+    { icon: '✓', text: 'Free RuPay debit card & cheque book' },
+    { icon: '✓', text: '4% interest on daily balance' },
+    { icon: '✓', text: 'Free NEFT/RTGS/IMPS transfers' },
+    { icon: '✓', text: 'Doorstep banking service available' },
+  ],
+  current: [
+    { icon: '✓', text: 'Unlimited transactions per month' },
+    { icon: '✓', text: 'Overdraft facility up to ₹5 Lakh' },
+    { icon: '✓', text: 'Business debit card with high limits' },
+    { icon: '✓', text: 'Free trade finance support' },
+    { icon: '✓', text: 'Dedicated relationship manager' },
+  ],
+  fd: [
+    { icon: '✓', text: 'Interest up to 8.5% p.a.' },
+    { icon: '✓', text: 'Tenures: 7 days to 5 years' },
+    { icon: '✓', text: 'Senior citizen: +0.5% extra rate' },
+    { icon: '✓', text: 'Loan against FD up to 95%' },
+    { icon: '✓', text: 'Auto-renewal option available' },
+  ],
+  rd: [
+    { icon: '✓', text: 'Start from just ₹500 per month' },
+    { icon: '✓', text: '7.5% interest p.a. on 12–60 months' },
+    { icon: '✓', text: 'Auto-debit setup from savings account' },
+    { icon: '✓', text: 'Maturity amount calculated upfront' },
+    { icon: '✓', text: 'Premature withdrawal allowed' },
+  ],
+};
+
+function switchTab(btn, type) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const features = document.getElementById('account-features');
+  features.innerHTML = accountData[type].map(f => `
+    <div class="feature-row">
+      <div class="feature-check">${f.icon}</div>
+      <div class="feature-text">${f.text}</div>
+    </div>
+  `).join('');
+}
+
+switchTab(document.querySelector('.tab-btn.active'), 'savings');
+
+// ── EMI CALCULATOR ──
+function fmt(n) {
+  return '₹' + Math.round(n).toLocaleString('en-IN');
+}
+
+function calcEMI() {
+  const P = +document.getElementById('loanAmt').value;
+  const annualRate = +document.getElementById('rate').value;
+  const years = +document.getElementById('tenure').value;
+
+  document.getElementById('loanAmtVal').textContent = fmt(P);
+  document.getElementById('rateVal').textContent = annualRate.toFixed(2) + '%';
+  document.getElementById('tenureVal').textContent = years + ' Yr' + (years > 1 ? 's' : '');
+
+  const r = annualRate / 12 / 100;
+  const n = years * 12;
+  const emi = P * r * Math.pow(1+r, n) / (Math.pow(1+r, n) - 1);
+  const total = emi * n;
+  const interest = total - P;
+
+  document.getElementById('emiVal').textContent = fmt(emi);
+  document.getElementById('intVal').textContent = fmt(interest);
+  document.getElementById('totalVal').textContent = fmt(total);
+
+  // Donut chart
+  const circ = 2 * Math.PI * 70; // 439.82
+  const principalFrac = P / total;
+  const interestFrac = interest / total;
+  const principalDash = principalFrac * circ;
+  const interestDash = interestFrac * circ;
+
+  const pArc = document.getElementById('principalArc');
+  const iArc = document.getElementById('interestArc');
+
+  pArc.setAttribute('stroke-dasharray', `${principalDash} ${circ - principalDash}`);
+  pArc.setAttribute('stroke-dashoffset', '0');
+
+  iArc.setAttribute('stroke-dasharray', `${interestDash} ${circ - interestDash}`);
+  iArc.setAttribute('stroke-dashoffset', `${-principalDash}`);
+
+  document.getElementById('donutPct').textContent = (principalFrac * 100).toFixed(1) + '%';
+
+  // Year bar
+  const yearBar = document.getElementById('yearBar');
+  yearBar.innerHTML = '';
+  const totalPerYear = emi * 12;
+  let balance = P;
+
+  for (let y = 1; y <= Math.min(years, 5); y++) {
+    let yearInterest = 0;
+    let yearPrincipal = 0;
+    for (let m = 0; m < 12; m++) {
+      const intPayment = balance * r;
+      const prinPayment = emi - intPayment;
+      yearInterest += intPayment;
+      yearPrincipal += prinPayment;
+      balance -= prinPayment;
+    }
+    const pPct = (yearPrincipal / totalPerYear * 100).toFixed(0);
+    const iPct = (yearInterest / totalPerYear * 100).toFixed(0);
+    yearBar.innerHTML += `
+      <div style="display:flex; align-items:center; gap:8px">
+        <span style="font-size:11px; color:var(--muted); min-width:36px">Yr ${y}</span>
+        <div style="flex:1; height:8px; border-radius:4px; background:var(--border); overflow:hidden">
+          <div style="height:100%; width:${pPct}%; background:linear-gradient(90deg, var(--orange), var(--orange-light)); border-radius:4px; display:inline-block"></div>
+          <div style="height:100%; width:${iPct}%; background:var(--gold); border-radius:4px; display:inline-block; margin-left:2px"></div>
+        </div>
+        <span style="font-size:10px; color:var(--muted); min-width:70px; text-align:right">${fmt(totalPerYear)}</span>
+      </div>
+    `;
+  }
+  if (years > 5) yearBar.innerHTML += `<div style="font-size:11px; color:var(--muted); margin-top:4px">…and ${years - 5} more year${years - 5 > 1 ? 's' : ''}</div>`;
+}
+
+calcEMI();
+
+// ── MODAL ──
+function openModal() {
+  document.getElementById('loginModal').classList.add('open');
+}
+
+function closeModal(e, force) {
+  if (force || (e && e.target === document.getElementById('loginModal'))) {
+    document.getElementById('loginModal').classList.remove('open');
+  }
+}
+
+// ── NAV SCROLL SHADOW ──
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('nav');
+  nav.style.boxShadow = window.scrollY > 10
+    ? '0 4px 32px rgba(232,93,4,0.12)'
+    : '0 2px 20px rgba(232,93,4,0.08)';
+});
+</script>
+</body>
+</html>
